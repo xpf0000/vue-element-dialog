@@ -1,0 +1,58 @@
+{
+  "name": "@xpf0000/vue-element-dialog",
+  "version": "1.0.0",
+  "author": "xu pengfei 250881478@qq.com",
+  "main": "dist/VueBaseDialog.umd.min.js",
+  "unpkg": "dist/VueBaseDialog.umd.min.js",
+  "browser": {
+    "./sfc": "src/components/BaseDialog/index.js"
+  },
+  "private": false,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --target lib --name VueBaseDialog ./src/components/BaseDialog/index.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "element-ui": "^2.13.2",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@babel/register": "^7.10.5",
+    "@vue/cli-plugin-babel": "^4.4.6",
+    "@vue/cli-plugin-eslint": "^4.4.6",
+    "@vue/cli-service": "^4.4.6",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "autoprefixer": "^9.8.6",
+    "babel-eslint": "^10.1.0",
+    "compression-webpack-plugin": "^4.0.0",
+    "eslint": "^7.6.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-vue": "^6.2.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.1.1",
+    "sass-loader": "^11.0.1",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "keywords": [
+    "vue",
+    "element-ui",
+    "vue dialog"
+  ],
+  "engines": {
+    "node": ">=8.9",
+    "npm": ">= 3.0.0"
+  }
+}
