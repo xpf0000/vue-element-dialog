@@ -42,15 +42,17 @@
         return
       }
       // 动态挂载内部需要展示的组件
-      this.$nextTick((_) => {
-        let tmpl = Vue.extend(this.component)
+      let that = this
+      this.$nextTick(function () {
+        let tmpl = Vue.extend(that.component)
         let opt = {
-          data: this.data
+          data: that.data
         }
-        for (let k in this.global) {
-          opt[k] = this.global[k]
+        for (let k in that.global) {
+          opt[k] = that.global[k]
         }
-        this.vm = new tmpl(opt).$mount(this.$refs.contentWapper)
+        that.vm = new tmpl(opt).$mount(that.$refs.contentWapper)
+        that.vm.callBack = that.callBack
       })
     },
     methods: {

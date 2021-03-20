@@ -12,8 +12,8 @@ let devServer = {
   noInfo: false,
   overlay: {
     warnings: true,
-    errors: true,
-  },
+    errors: true
+  }
 }
 
 module.exports = {
@@ -25,8 +25,8 @@ module.exports = {
     return {
       resolve: {
         alias: {
-          '@': resolve('src'),
-        },
+          '@': resolve('src')
+        }
       },
       optimization:
         process.env.NODE_ENV === 'production'
@@ -39,54 +39,54 @@ module.exports = {
                     warnings: false,
                     parse: {},
                     compress: {
-                      drop_console: true,
-                    },
-                  },
-                }),
-              ],
+                      drop_console: true
+                    }
+                  }
+                })
+              ]
             }
-          : {},
+          : {}
     }
   },
-  chainWebpack(config) {
-    config.when(process.env.NODE_ENV !== 'development', (config) => {
-      config.performance.set('hints', false)
-      config.devtool('none')
-      config.optimization.splitChunks({
-        chunks: 'all',
-        cacheGroups: {
-          libs: {
-            name: 'chunk-libs',
-            test: /[\\/]node_modules[\\/]/,
-            priority: 10,
-            chunks: 'initial',
-          },
-          elementUI: {
-            name: 'chunk-elementUI',
-            priority: 20,
-            test: /[\\/]node_modules[\\/]_?element-ui(.*)/,
-          },
-          fortawesome: {
-            name: 'chunk-fortawesome',
-            priority: 20,
-            test: /[\\/]node_modules[\\/]_?@fortawesome(.*)/,
-          },
-          commons: {
-            name: 'chunk-commons',
-            test: resolve('src/components'),
-            minChunks: 3,
-            priority: 5,
-            reuseExistingChunk: true,
-          },
-        },
-      })
-    })
-  },
+  // chainWebpack(config) {
+  //   config.when(process.env.NODE_ENV !== 'development', (config) => {
+  //     config.performance.set('hints', false)
+  //     config.devtool('none')
+  //     config.optimization.splitChunks({
+  //       chunks: 'all',
+  //       cacheGroups: {
+  //         libs: {
+  //           name: 'chunk-libs',
+  //           test: /[\\/]node_modules[\\/]/,
+  //           priority: 10,
+  //           chunks: 'initial'
+  //         },
+  //         elementUI: {
+  //           name: 'chunk-elementUI',
+  //           priority: 20,
+  //           test: /[\\/]node_modules[\\/]_?element-ui(.*)/
+  //         },
+  //         fortawesome: {
+  //           name: 'chunk-fortawesome',
+  //           priority: 20,
+  //           test: /[\\/]node_modules[\\/]_?@fortawesome(.*)/
+  //         },
+  //         commons: {
+  //           name: 'chunk-commons',
+  //           test: resolve('src/components'),
+  //           minChunks: 3,
+  //           priority: 5,
+  //           reuseExistingChunk: true
+  //         }
+  //       }
+  //     })
+  //   })
+  // },
   runtimeCompiler: true,
   productionSourceMap: false,
   css: {
     requireModuleExtension: true,
     sourceMap: true,
-    loaderOptions: {},
-  },
+    loaderOptions: {}
+  }
 }

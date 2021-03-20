@@ -1,22 +1,5 @@
 import Vue from 'vue'
 import DialogView from './index.vue'
-const componentParse = async (component) => {
-  let type = Object.prototype.toString.call(component)
-  let view
-  switch (type) {
-    case '[object Module]':
-      view = component.default
-      break
-    case '[object Promise]':
-      let res = await component
-      view = res.default
-      break
-    default:
-      view = component
-      break
-  }
-  return view
-}
 class Dialog {
   constructor(component) {
     this._component = component
@@ -91,43 +74,42 @@ class Dialog {
     let dom = document.createElement('div')
     document.body.appendChild(dom)
     let tmpl = Vue.extend(DialogView)
-    componentParse(this._component).then((view) => {
-      // 弹窗标题 优先级 方法设置 > 页面设置
-      let title = view.title || '弹窗标题'
-      if (this._dialogTitle) {
-        title = this._dialogTitle
+    let view = this._component
+    // 弹窗标题 优先级 方法设置 > 页面设置
+    let title = view.title || '弹窗标题'
+    if (this._dialogTitle) {
+      title = this._dialogTitle
+    }
+    // 是否显示底部按钮 默认显示 优先级 方法设置 > 页面设置
+    let footer = true
+    if (this._dialogFooter !== undefined) {
+      footer = this._dialogFooter
+    } else if (view.hasOwnProperty('dialogFooterShow')) {
+      footer = view.dialogFooterShow
+    }
+    let opt = {
+      data: {
+        show: true,
+        footerShow: footer,
+        title: title,
+        component: view,
+        data: this._componentData,
+        width: this._dialogWidth,
+        className: this._dialogClassName,
+        global: this._global
       }
-      // 是否显示底部按钮 默认显示 优先级 方法设置 > 页面设置
-      let footer = true
-      if (this._dialogFooter !== undefined) {
-        footer = this._dialogFooter
-      } else if (view.hasOwnProperty('dialogFooterShow')) {
-        footer = view.dialogFooterShow
+    }
+    for (let k in this._global) {
+      opt[k] = this._global[k]
+    }
+    let vm = new tmpl(opt).$mount(dom)
+    let that = this
+    vm.callBack = function (res, close = true) {
+      if (close) {
+        vm && vm.close && vm.close()
       }
-      let opt = {
-        data: {
-          show: true,
-          footerShow: footer,
-          title: title,
-          component: view,
-          data: this._componentData,
-          width: this._dialogWidth,
-          className: this._dialogClassName,
-          global: this._global,
-          aaa: 'bbb'
-        }
-      }
-      for (let k in this._global) {
-        opt[k] = this._global[k]
-      }
-      let vm = new tmpl(opt).$mount(dom)
-      vm.callBack = (res, close = true) => {
-        if (close) {
-          vm && vm.close && vm.close()
-        }
-        this._resolve && this._resolve(res)
-      }
-    })
+      that._resolve && that._resolve(res)
+    }
     return this
   }
 
@@ -141,15 +123,28 @@ class Dialog {
     return this
   }
 }
-const install = (Vue, opts = {}) => {
-  Vue.prototype.$baseDialog = function (component) {
-    console.log('this: ', this)
+function install(v) {
+  if (install.installed) return
+  install.installed = true
+  v.prototype.$baseDialog = function (component) {
     let dialog = new Dialog(component)
     dialog.global('store', this.$store)
     return dialog
   }
 }
-if (typeof window !== 'undefined' && window.Vue) {
-  install(window.Vue)
+
+const plugin = {
+  install
 }
-export default install
+
+let GlobalVue = null
+if (typeof window !== 'undefined') {
+  GlobalVue = window.Vue
+} else if (typeof global !== 'undefined') {
+  GlobalVue = global.Vue
+}
+if (GlobalVue) {
+  GlobalVue.use(plugin)
+}
+
+export default plugin

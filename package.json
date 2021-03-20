@@ -1,6 +1,6 @@
 {
   "name": "@xpf0000/vue-element-dialog",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "xu pengfei 250881478@qq.com",
   "main": "dist/VueBaseDialog.umd.min.js",
   "unpkg": "dist/VueBaseDialog.umd.min.js",
@@ -10,7 +10,8 @@
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name VueBaseDialog ./src/components/BaseDialog/index.js"
+    "build": "vue-cli-service build --target lib --name VueBaseDialog ./src/components/BaseDialog/index.js",
+    "bbb": "cross-env NODE_ENV=production webpack --mode production --progress --hide-modules"
   },
   "husky": {
     "hooks": {
@@ -24,11 +25,11 @@
     ]
   },
   "dependencies": {
-    "core-js": "^3.6.5",
     "element-ui": "^2.13.2",
     "vue": "^2.6.11"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-umd": "^7.13.0",
     "@babel/register": "^7.10.5",
     "@vue/cli-plugin-babel": "^4.4.6",
     "@vue/cli-plugin-eslint": "^4.4.6",
@@ -36,6 +37,7 @@
     "@vue/eslint-config-prettier": "^6.0.0",
     "autoprefixer": "^9.8.6",
     "babel-eslint": "^10.1.0",
+    "babel-plugin-component": "^1.1.1",
     "compression-webpack-plugin": "^4.0.0",
     "eslint": "^7.6.0",
     "eslint-plugin-prettier": "^3.1.4",
