@@ -1,6 +1,6 @@
 {
   "name": "@xpf0000/vue-element-dialog",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "xu pengfei 250881478@qq.com",
   "main": "dist/VueBaseDialog.umd.min.js",
   "unpkg": "dist/VueBaseDialog.umd.min.js",
