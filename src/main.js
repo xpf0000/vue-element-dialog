@@ -2,8 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import VueBaseDialog from '/dist/VueBaseDialog.umd'
-// const BaseDialog = require('/dist/VueBaseDialog.umd')
+import VueBaseDialog from '/dist'
 console.log('VueBaseDialog: ', VueBaseDialog)
 Vue.use(VueBaseDialog)
 Vue.use(ElementUI, {

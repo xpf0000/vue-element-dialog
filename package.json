@@ -1,6 +1,6 @@
 {
   "name": "@xpf0000/vue-element-dialog",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "xu pengfei 250881478@qq.com",
   "main": "dist/VueBaseDialog.umd.min.js",
   "unpkg": "dist/VueBaseDialog.umd.min.js",
@@ -9,9 +9,7 @@
   },
   "private": false,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name VueBaseDialog ./src/components/BaseDialog/index.js",
-    "bbb": "cross-env NODE_ENV=production webpack --mode production --progress --hide-modules"
+    "serve": "vue-cli-service serve"
   },
   "husky": {
     "hooks": {
