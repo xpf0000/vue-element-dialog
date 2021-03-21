@@ -1,11 +1,11 @@
 {
   "name": "@xpf0000/vue-element-dialog",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "xu pengfei 250881478@qq.com",
-  "main": "dist/VueBaseDialog.umd.min.js",
-  "unpkg": "dist/VueBaseDialog.umd.min.js",
+  "main": "dist/index.js",
+  "unpkg": "dist/index.js",
   "browser": {
-    "./sfc": "src/components/BaseDialog/index.js"
+    "./sfc": "dist/index.js"
   },
   "private": false,
   "scripts": {
