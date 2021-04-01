@@ -69,6 +69,11 @@ class BaseDialog {
     return this
   }
 
+  size800x600() {
+    this._size = 'dialog_size_800_600'
+    return this
+  }
+
   /**
    * 不显示底部按钮
    * @returns {Dialog}
@@ -113,7 +118,8 @@ class BaseDialog {
           data: this._componentData,
           width: this._dialogWidth,
           className: this._dialogClassName,
-          global: this._global
+          global: this._global,
+          size: this._size
         }
       }
       for (let k in this._global) {

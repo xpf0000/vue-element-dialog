@@ -14,7 +14,8 @@
         this.$baseDialog(DialogView)
           .title('AAA-BBB')
           .className('CCCC')
-          .width('700px')
+          .width('900px')
+          .size800x600()
           .show()
       }
     }

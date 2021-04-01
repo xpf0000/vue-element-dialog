@@ -1,6 +1,6 @@
 {
   "name": "@xpf0000/vue-element-dialog",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "xu pengfei 250881478@qq.com",
   "main": "dist/index.js",
   "unpkg": "dist/index.js",
@@ -43,6 +43,7 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "prettier": "^2.1.1",
+    "sass": "^1.32.8",
     "sass-loader": "^11.0.1",
     "vue-template-compiler": "^2.6.11"
   },

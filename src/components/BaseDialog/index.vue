@@ -3,7 +3,7 @@
     :title="title"
     :visible.sync="show"
     :width="width"
-    :custom-class="className"
+    :custom-class="className + ' ' + size"
     :close-on-click-modal="false"
     :destroy-on-close="true"
     @closed="closed"
@@ -32,7 +32,8 @@
         component: null, // 弹窗展示的内部组件
         data: {}, // 传递给内部组件的数据
         className: '', // 弹窗的扩展类名
-        global: {}
+        global: {},
+        size: ''
       }
     },
     watch: {},
@@ -72,3 +73,21 @@
     }
   }
 </script>
+<style>
+  .el-dialog {
+    display: flex;
+    flex-direction: column;
+  }
+  .el-dialog__header,
+  .el-dialog__footer {
+    flex-shrink: 0;
+  }
+  .el-dialog__body {
+    flex: 1;
+    overflow: auto;
+  }
+  .dialog_size_800_600 {
+    width: 800px !important;
+    height: 600px !important;
+  }
+</style>
