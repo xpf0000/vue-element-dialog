@@ -1,5 +1,5 @@
 import BaseDialog from './components/BaseDialog'
-function install(Vue, { size }) {
+function install(Vue, config = { size: '' }) {
   if (install.installed) return
   install.installed = true
   Vue.prototype.$baseDialog = function (
@@ -12,7 +12,7 @@ function install(Vue, { size }) {
     dialog.global('store', this.$store)
     dialog.data(data)
     dialog.width(width)
-    dialog.size(size)
+    dialog.size(config.size)
     dialog.className(className)
     return dialog
   }
