@@ -1,10 +1,19 @@
-import BaseDialog from '../src/components/BaseDialog'
-function install(Vue) {
+import BaseDialog from './components/BaseDialog'
+function install(Vue, { size }) {
   if (install.installed) return
   install.installed = true
-  Vue.prototype.$baseDialog = function (component) {
+  Vue.prototype.$baseDialog = function (
+    component,
+    data = {},
+    width = '50%',
+    className = ''
+  ) {
     let dialog = new BaseDialog(component)
     dialog.global('store', this.$store)
+    dialog.data(data)
+    dialog.width(width)
+    dialog.size(size)
+    dialog.className(className)
     return dialog
   }
 }
@@ -24,6 +33,4 @@ if (GlobalVue) {
 }
 
 export default plugin
-export {
-  BaseDialog
-}
+export { BaseDialog }

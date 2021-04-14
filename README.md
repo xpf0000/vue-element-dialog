@@ -10,7 +10,9 @@ npm install @xpf0000/vue-element-dialog
 // 引用
 import Vue from 'vue'
 import VueBaseDialog from '@xpf0000/vue-element-dialog'
-Vue.use(VueBaseDialog)
+Vue.use(VueBaseDialog, {
+size: 'sizeClass'
+})
 
 // 弹出组件中
 

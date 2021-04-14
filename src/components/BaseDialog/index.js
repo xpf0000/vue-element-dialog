@@ -69,6 +69,11 @@ class BaseDialog {
     return this
   }
 
+  size(s) {
+    this._size = s
+    return this
+  }
+
   size800x600() {
     this._size = 'dialog_size_800_600'
     return this
@@ -119,7 +124,7 @@ class BaseDialog {
           width: this._dialogWidth,
           className: this._dialogClassName,
           global: this._global,
-          size: this._size
+          size: this._size || ''
         }
       }
       for (let k in this._global) {
