@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import DialogView from './index.vue'
+export const AllDialog = {}
 const componentParse = async (component) => {
   let type = Object.prototype.toString.call(component)
   let view

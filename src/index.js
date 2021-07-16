@@ -1,4 +1,5 @@
 import BaseDialog from './components/BaseDialog'
+import { AllDialog } from './components/BaseDialog'
 function install(Vue, config = { size: '' }) {
   if (install.installed) return
   install.installed = true
@@ -15,6 +16,11 @@ function install(Vue, config = { size: '' }) {
     dialog.size(config.size)
     dialog.className(className)
     return dialog
+  }
+  Vue.prototype.$baseDialogCloseAll = function () {
+    for (let uid in AllDialog) {
+      AllDialog[uid].close()
+    }
   }
 }
 

@@ -22,6 +22,7 @@
    * @desc 全局通用弹窗组件
    */
   import Vue from 'vue'
+  import { AllDialog } from './index'
   export default {
     data() {
       return {
@@ -37,7 +38,9 @@
       }
     },
     watch: {},
-    created() {},
+    created() {
+      AllDialog[this._uid] = this
+    },
     mounted() {
       if (!this.component) {
         return
@@ -56,10 +59,14 @@
         that.vm.callBack = that.callBack
       })
     },
+    destroyed() {
+      delete AllDialog[this._uid]
+    },
     methods: {
       closed() {
         this.vm.$destroy()
         this.$el.remove()
+        this.$destroy()
       },
       close() {
         this.show = false

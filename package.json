@@ -1,6 +1,6 @@
 {
   "name": "@xpf0000/vue-element-dialog",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "author": "xu pengfei 250881478@qq.com",
   "main": "src/index.js",
   "unpkg": "src/index.js",
